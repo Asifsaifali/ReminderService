@@ -25,6 +25,24 @@ class EmailService {
       console.log(error);
     }
   }
+
+  async fetchPendingEmails() {
+    try {
+      const resp = await repo.get({ status: "PENDING" });
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async updateEmails(ticketId,data){
+    try {
+      const ticket=await repo.update(ticketId,data)
+      return ticket;
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 module.exports = EmailService;

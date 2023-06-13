@@ -1,9 +1,9 @@
 const express=require('express');
 const app=express();
-const cron =require('node-cron')
 const bodyparser=require('body-parser')
 const { PORT } = require('./config/serverConfig')
 //  const {sendBasicEmail}=require('./services/email-service')
+const setupJobs=require('./utils/jobs')
 
 const ApiRoute=require('./routes/index')
 
@@ -24,6 +24,8 @@ const setUpServer=()=>{
         // cron.schedule('*/2 * * * *', () => {
         //     console.log('running a task every two minutes');
         //   });
+
+        setupJobs();
         
     })
 }
